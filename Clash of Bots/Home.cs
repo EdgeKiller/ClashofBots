@@ -532,12 +532,6 @@ namespace Clash_of_Bots
         }
 
         #endregion
-
-        
-        
-       
-
-        
-
+   
     }
 }

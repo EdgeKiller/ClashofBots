@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.formSkin1 = new FlatUITheme.FormSkin();
-            this.flatButton_rtime = new FlatUITheme.FlatButton();
             this.flatStatusBar_status = new FlatUITheme.FlatStatusBar();
             this.flatTabControl1 = new FlatUITheme.FlatTabControl();
             this.tabPage_general = new System.Windows.Forms.TabPage();
@@ -86,7 +85,6 @@
             this.formSkin1.BackColor = System.Drawing.Color.White;
             this.formSkin1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             this.formSkin1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(60)))));
-            this.formSkin1.Controls.Add(this.flatButton_rtime);
             this.formSkin1.Controls.Add(this.flatStatusBar_status);
             this.formSkin1.Controls.Add(this.flatTabControl1);
             this.formSkin1.Controls.Add(this.flatClose1);
@@ -101,20 +99,6 @@
             this.formSkin1.Size = new System.Drawing.Size(400, 515);
             this.formSkin1.TabIndex = 0;
             this.formSkin1.Text = "Clash of Bots • Home";
-            // 
-            // flatButton_rtime
-            // 
-            this.flatButton_rtime.BackColor = System.Drawing.Color.Transparent;
-            this.flatButton_rtime.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
-            this.flatButton_rtime.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.flatButton_rtime.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.flatButton_rtime.Location = new System.Drawing.Point(290, 492);
-            this.flatButton_rtime.Name = "flatButton_rtime";
-            this.flatButton_rtime.Rounded = false;
-            this.flatButton_rtime.Size = new System.Drawing.Size(98, 20);
-            this.flatButton_rtime.TabIndex = 5;
-            this.flatButton_rtime.Text = "Remaining time";
-            this.flatButton_rtime.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             // 
             // flatStatusBar_status
             // 
@@ -850,7 +834,6 @@
         private FlatUITheme.FlatComboBox flatComboBox_sidesToAttack;
         private FlatUITheme.FlatLabel flatLabel_attackMode;
         private FlatUITheme.FlatButton flatButton_attack;
-        private FlatUITheme.FlatButton flatButton_rtime;
         private FlatUITheme.FlatCheckBox flatCheckBox_maxTrophy;
         private FlatUITheme.FlatTextBox flatTextBox_maxTrophy;
         private FlatUITheme.FlatLabel flatLabel_manualTasks;
