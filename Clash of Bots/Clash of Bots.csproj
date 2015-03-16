@@ -71,11 +71,11 @@
   <ItemGroup>
     <Reference Include="BotLibNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Others\BotLibNet\BotLibNet\bin\Debug\BotLibNet.dll</HintPath>
+      <HintPath>..\..\BotLibNet\BotLibNet\bin\Debug\BotLibNet.dll</HintPath>
     </Reference>
     <Reference Include="CocFunctions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\CocFunctions\CocCharRec\bin\Debug\CocFunctions.dll</HintPath>
+      <HintPath>..\..\CocFunctions\CocFunctions\bin\Debug\CocFunctions.dll</HintPath>
     </Reference>
     <Reference Include="FlatUITheme, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

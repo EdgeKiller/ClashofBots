@@ -72,36 +72,10 @@ namespace Clash_of_Bots
             }
             bsProcess = new BotProcess("HD-Frontend");
 
-            #region VerifyOS
-            int os;
-            if((os = OS.GetOS()) != 0)
-            {
-                switch(os)
-                {
-                    case 1: //Windows XP + 2000
-                        Settings.xDif = 0;
-                        Settings.yDif = 0;
-                        break;
-                    case 2: //Windows VISTA
-                        Settings.xDif = 0;
-                        Settings.yDif = 0;
-                        break;
-                    case 3: //Windows 7
-                        Settings.xDif = 0;
-                        Settings.yDif = 0;
-                        break;
-                    case 4: //Windows 8
-                        Settings.xDif = 0;
-                        Settings.yDif = 1;
-                        break;
-                }
-            }
-            else
-            {
-                MessageBox.Show("What is your OS ? Contact the admnistrator please !");
-                Application.Exit();
-                this.Close();
-            }
+            #region VerifyWindowBorderSize
+            Size dif = Window.GetBorderSize(bsProcess.image.GetWindowImage());
+            Settings.xDif = dif.Width;
+            Settings.yDif = dif.Height;
             #endregion
 
             Log.Init(flatListBox_log, flatStatusBar_status);
