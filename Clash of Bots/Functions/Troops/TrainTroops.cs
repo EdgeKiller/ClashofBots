@@ -23,16 +23,19 @@ namespace Clash_of_Bots
                 if(pointPosition.X != -1 || pointPosition.Y != -1)
                 {
                     Home.bsProcess.mouse.SendClick(WButton.Left, pointPosition, false);
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                     if (ColorDif.isCorrect(Home.bsProcess.image.GetPixelColor(Buttons.GetPos("5_5", Settings.xDif, Settings.yDif)), Color.FromArgb(112, 140, 176)))
                         Home.bsProcess.mouse.SendClick(WButton.Left, Buttons.GetPos("5_5", Settings.xDif, Settings.yDif), false);
+                    else if(ColorDif.isCorrect(Home.bsProcess.image.GetPixelColor(Buttons.GetPos("3_3", Settings.xDif, Settings.yDif)), Color.FromArgb(161, 184, 207)))
+                        Home.bsProcess.mouse.SendClick(WButton.Left, Buttons.GetPos("3_3", Settings.xDif, Settings.yDif), false);
                     else
                         Home.bsProcess.mouse.SendClick(WButton.Left, Buttons.GetPos("4_4", Settings.xDif, Settings.yDif), false);
-                    Thread.Sleep(500);
+
+                    Thread.Sleep(1000);
                     while (!SameRGB(Home.bsProcess.image.GetPixelColor(CocFunctions.Buttons.GetPos("troop" + intTroop, Settings.xDif, Settings.yDif))))
                     {
                         Home.bsProcess.mouse.SendClick(WButton.Left, CocFunctions.Buttons.GetPos("troop" + intTroop, Settings.xDif, Settings.yDif), false);
-                        Thread.Sleep(50);
+                        Thread.Sleep(100);
                     }
                     Home.bsProcess.mouse.SendClick(WButton.Left, new Point(0,0), false);
                     Thread.Sleep(500);
