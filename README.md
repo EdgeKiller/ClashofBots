@@ -5,9 +5,10 @@ Clash of Bots
 
 - Clash of Bots is a open-source and free bot for Clash of Clans.
 Clash of Bots requiere two libraries :
-https://github.com/valdgeorgio/CocFunctions
 
-https://github.com/valdgeorgio/BotLibNet
+  https://github.com/valdgeorgio/CocFunctions
+  
+  https://github.com/valdgeorgio/BotLibNet
 
 **Which programming language is used ?**
 
