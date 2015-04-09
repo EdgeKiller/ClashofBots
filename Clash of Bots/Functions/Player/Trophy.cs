@@ -8,7 +8,7 @@ namespace Clash_of_Bots
         public static int Get()
         {
             int trophy;
-            trophy = Read.GetNumber(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("player_trophy", Settings.xDif, Settings.yDif)));
+            trophy = Read.GetNumberResources(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("player_trophy", Settings.xDif, Settings.yDif)));
             return trophy;
         }
 

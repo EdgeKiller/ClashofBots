@@ -4,6 +4,7 @@ using IniParser;
 using IniParser.Model;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -25,6 +26,10 @@ namespace Clash_of_Bots
 
     public partial class Home : Form
     {
+        private long runningTimeSecond = 0;
+
+        public static int goldGain = 0, elixirGain = 0, darkGain = 0;
+
         public static BotProcess bsProcess;
         static bool isHide;
         public Status botStatusVar = new Status();
@@ -38,6 +43,7 @@ namespace Clash_of_Bots
             }
         }
 
+        #region BGWORKER_REM
         //BGWORKER_CHECKKEY
         BackgroundWorker bg_checkKey = new BackgroundWorker();
         //BGWORKER_UNZOOM
@@ -54,6 +60,7 @@ namespace Clash_of_Bots
         BackgroundWorker bg_attack = new BackgroundWorker();
         //BGWORKER_PLAY
         AbortableBackgroundWorker bg_play = new AbortableBackgroundWorker();
+        #endregion
 
         public Home()
         {
@@ -71,13 +78,11 @@ namespace Clash_of_Bots
                 Environment.Exit(0);
             }
             bsProcess = new BotProcess("HD-Frontend");
-
             #region VerifyWindowBorderSize
             Size dif = Window.GetBorderSize(bsProcess.image.GetWindowImage());
             Settings.xDif = dif.Width;
             Settings.yDif = dif.Height;
             #endregion
-
             Log.Init(flatListBox_log, flatStatusBar_status);
             #region BGWORKERS_INIT
             //BGWORKER_UNZOOM
@@ -101,11 +106,12 @@ namespace Clash_of_Bots
             //BGWORKER_PLAY
             bg_play.DoWork += new DoWorkEventHandler(bgWorker_play_DoWork);
             bg_play.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_play_Finish);
-
             #endregion
             botStatus = Status.Free;
             bg_loadconfig.RunWorkerAsync();
             bg_unzoom.RunWorkerAsync();
+
+            flatNumeric_deployTime.ValueChange += new EventHandler(flatNumeric_deployTime_ValueChange);
         }
 
         #region BUTTONS
@@ -199,15 +205,52 @@ namespace Clash_of_Bots
                 flatButton_start.BaseColor = Color.FromArgb(168, 35, 35);
                 flatButton_start.Text = "Stop";
                 flatButton_start.Refresh();
+                runningTimeSecond = 0;
+                timer_runningTime.Start();
             }
             else
             {
+                timer_runningTime.Stop();
                 bg_play.Abort();
                 bg_play.Dispose();
+                bsProcess.mouse.SendClick(WButton.Left, new Point(0, 0), false);
+                Thread.Sleep(100);
+                bsProcess.mouse.SendClick(WButton.Left, new Point(0, 0), false);
             }
         }
-        #endregion
 
+        //CHECK VERSION BUTTON
+        private void flatButton_checkVersion_Click(object sender, EventArgs e)
+        {
+            string lastVersion = new System.Net.WebClient().DownloadString("http://clashofbots.edgekiller.fr/lastversion");
+            if(lastVersion == Settings.version)
+                MessageBox.Show("Your bot is up to date", "Up to date");
+            else
+                if(MessageBox.Show("Your bot is outdated, do you want to download the last version ?", "Outdated", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    Process.Start("http://clashofbots.edgekiller.fr/forum/index.php?/forum/5-releases/");
+        }
+
+        //NEED HELP BUTTON
+        private void flatButton_needHelp_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://clashofbots.edgekiller.fr/forum/");
+        }
+
+        //RESET STATS BUTTON
+        private void flatButton_resetStats_Click(object sender, EventArgs e)
+        {
+            goldGain = 0;
+            elixirGain = 0;
+            darkGain = 0;
+            flatLabel_statsGold.Text = goldGain.ToString();
+            flatLabel_statsElixir.Text = elixirGain.ToString();
+            flatLabel_statsDark.Text = darkGain.ToString();
+            flatLabel_statsDark.Refresh();
+            flatLabel_statsElixir.Refresh();
+            flatLabel_statsGold.Refresh();
+        }
+
+        #endregion
 
         #region BGWORKER_UNZOOM
         private void bgWorker_unzoom_DoWork(object sender, DoWorkEventArgs e)
@@ -230,7 +273,8 @@ namespace Clash_of_Bots
             LoadConfig.Load(flatComboBox_barrack1, flatComboBox_barrack2, flatComboBox_barrack3, flatComboBox_barrack4,
                 flatTextBox_gold, flatTextBox_elixir, flatTextBox_dark, flatTextBox_trophy,
                 flatCheckBox_gold, flatCheckBox_elixir, flatCheckBox_dark, flatCheckBox_trophy,
-                flatCheckBox_alert, flatComboBox_sidesToAttack, flatCheckBox_maxTrophy, flatTextBox_maxTrophy, flatComboBox_attackMode);
+                flatCheckBox_alert, flatComboBox_sidesToAttack, flatCheckBox_maxTrophy, flatTextBox_maxTrophy, flatComboBox_attackMode,
+                flatNumeric_deployTime);
         }
         private void bgWorker_loadconfig_Finish(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -307,9 +351,8 @@ namespace Clash_of_Bots
         private void bgWorker_play_DoWork(object sender, DoWorkEventArgs e)
         {
             bool isReadyToAttack = false;
-            var worker = sender as BackgroundWorker;
             Zoom.UnZoom();
-            while(!worker.CancellationPending)
+            while (bg_play.IsBusy)
             {
                 isReadyToAttack = false;
                 Zoom.UnZoom();
@@ -344,6 +387,10 @@ namespace Clash_of_Bots
                 AttackVillage.Attack();
                 Log.SetLog("Attack complete.");
                 Thread.Sleep(1000);
+                flatLabel_statsGold.Text = goldGain.ToString();
+                flatLabel_statsElixir.Text = elixirGain.ToString();
+                flatLabel_statsDark.Text = darkGain.ToString();
+                Thread.Sleep(500);
                 Zoom.UnZoom();
                 while(flatCheckBox_maxTrophy.Checked && Trophy.Get() > Convert.ToInt32(flatTextBox_maxTrophy.Text))
                 {
@@ -505,7 +552,45 @@ namespace Clash_of_Bots
             parser.WriteFile("config.ini", data);
         }
 
+        private void flatNumeric_deployTime_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void flatNumeric_deployTime_ValueChange(object sender, EventArgs e)
+        {
+            FileIniDataParser parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("config.ini");
+            data["attack"]["deploytime"] = flatNumeric_deployTime.Value.ToString();
+            parser.WriteFile("config.ini", data);
+        }
+
         #endregion
+
+        private void timer_runningTime_Tick(object sender, EventArgs e)
+        {
+            runningTimeSecond++;
+            TimeSpan t = TimeSpan.FromSeconds(runningTimeSecond);
+            string answer = string.Format("{3:D2}d:{0:D2}h:{1:D2}m:{2:D2}s",
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds,
+                            t.Days);
+            flatLabel_runningTime.Text = "Running time : " + answer;
+        }
+
+        
+
+       
+
+        
+
+        
+
+       
+        
+
+        
    
     }
 }

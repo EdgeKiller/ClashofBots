@@ -22,6 +22,7 @@ namespace Clash_of_Bots
             }
             catch (ThreadAbortException)
             {
+                
                 e.Cancel = true; //We must set Cancel property to true!
                 Thread.ResetAbort(); //Prevents ThreadAbortException propagation
             }

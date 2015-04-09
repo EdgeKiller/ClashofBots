@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.formSkin1 = new FlatUITheme.FormSkin();
+            this.flatLabel_runningTime = new FlatUITheme.FlatLabel();
             this.flatStatusBar_status = new FlatUITheme.FlatStatusBar();
             this.flatTabControl1 = new FlatUITheme.FlatTabControl();
             this.tabPage_general = new System.Windows.Forms.TabPage();
@@ -56,6 +58,8 @@
             this.flatTextBox_dark = new FlatUITheme.FlatTextBox();
             this.flatTextBox_elixir = new FlatUITheme.FlatTextBox();
             this.tabPage_attackDonate = new System.Windows.Forms.TabPage();
+            this.flatLabel6 = new FlatUITheme.FlatLabel();
+            this.flatNumeric_deployTime = new FlatUITheme.FlatNumeric();
             this.flatComboBox_attackMode = new FlatUITheme.FlatComboBox();
             this.flatLabel5 = new FlatUITheme.FlatLabel();
             this.flatTextBox_maxTrophy = new FlatUITheme.FlatTextBox();
@@ -63,6 +67,16 @@
             this.flatLabel_attackMode = new FlatUITheme.FlatLabel();
             this.flatComboBox_sidesToAttack = new FlatUITheme.FlatComboBox();
             this.tabPage_manualTasks = new System.Windows.Forms.TabPage();
+            this.flatButton_resetStats = new FlatUITheme.FlatButton();
+            this.flatLabel_statsDark = new FlatUITheme.FlatLabel();
+            this.flatLabel_statsElixir = new FlatUITheme.FlatLabel();
+            this.flatLabel_statsGold = new FlatUITheme.FlatLabel();
+            this.flatLabel_stats = new FlatUITheme.FlatLabel();
+            this.pictureBox_statsDark = new System.Windows.Forms.PictureBox();
+            this.pictureBox_statsElixir = new System.Windows.Forms.PictureBox();
+            this.pictureBox_statsGold = new System.Windows.Forms.PictureBox();
+            this.flatButton_checkVersion = new FlatUITheme.FlatButton();
+            this.flatButton_needHelp = new FlatUITheme.FlatButton();
             this.flatLabel_manualTasks = new FlatUITheme.FlatLabel();
             this.flatButton_attack = new FlatUITheme.FlatButton();
             this.flatButton_searchMode = new FlatUITheme.FlatButton();
@@ -72,12 +86,16 @@
             this.flatButton_locateCollectors = new FlatUITheme.FlatButton();
             this.flatClose1 = new FlatUITheme.FlatClose();
             this.flatMini1 = new FlatUITheme.FlatMini();
+            this.timer_runningTime = new System.Windows.Forms.Timer(this.components);
             this.formSkin1.SuspendLayout();
             this.flatTabControl1.SuspendLayout();
             this.tabPage_general.SuspendLayout();
             this.tabPage_searchTroops.SuspendLayout();
             this.tabPage_attackDonate.SuspendLayout();
             this.tabPage_manualTasks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_statsDark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_statsElixir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_statsGold)).BeginInit();
             this.SuspendLayout();
             // 
             // formSkin1
@@ -85,6 +103,7 @@
             this.formSkin1.BackColor = System.Drawing.Color.White;
             this.formSkin1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             this.formSkin1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(60)))));
+            this.formSkin1.Controls.Add(this.flatLabel_runningTime);
             this.formSkin1.Controls.Add(this.flatStatusBar_status);
             this.formSkin1.Controls.Add(this.flatTabControl1);
             this.formSkin1.Controls.Add(this.flatClose1);
@@ -99,6 +118,18 @@
             this.formSkin1.Size = new System.Drawing.Size(400, 515);
             this.formSkin1.TabIndex = 0;
             this.formSkin1.Text = "Clash of Bots • Home";
+            // 
+            // flatLabel_runningTime
+            // 
+            this.flatLabel_runningTime.AutoSize = true;
+            this.flatLabel_runningTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.flatLabel_runningTime.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.flatLabel_runningTime.ForeColor = System.Drawing.Color.White;
+            this.flatLabel_runningTime.Location = new System.Drawing.Point(222, 495);
+            this.flatLabel_runningTime.Name = "flatLabel_runningTime";
+            this.flatLabel_runningTime.Size = new System.Drawing.Size(83, 13);
+            this.flatLabel_runningTime.TabIndex = 20;
+            this.flatLabel_runningTime.Text = "Running time :";
             // 
             // flatStatusBar_status
             // 
@@ -512,6 +543,8 @@
             // tabPage_attackDonate
             // 
             this.tabPage_attackDonate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage_attackDonate.Controls.Add(this.flatLabel6);
+            this.tabPage_attackDonate.Controls.Add(this.flatNumeric_deployTime);
             this.tabPage_attackDonate.Controls.Add(this.flatComboBox_attackMode);
             this.tabPage_attackDonate.Controls.Add(this.flatLabel5);
             this.tabPage_attackDonate.Controls.Add(this.flatTextBox_maxTrophy);
@@ -524,6 +557,37 @@
             this.tabPage_attackDonate.Size = new System.Drawing.Size(392, 394);
             this.tabPage_attackDonate.TabIndex = 3;
             this.tabPage_attackDonate.Text = "Attack/Donate Settings";
+            // 
+            // flatLabel6
+            // 
+            this.flatLabel6.AutoSize = true;
+            this.flatLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.flatLabel6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.flatLabel6.ForeColor = System.Drawing.Color.White;
+            this.flatLabel6.Location = new System.Drawing.Point(31, 80);
+            this.flatLabel6.Name = "flatLabel6";
+            this.flatLabel6.Size = new System.Drawing.Size(120, 19);
+            this.flatLabel6.TabIndex = 11;
+            this.flatLabel6.Text = "Deploy time (ms) :";
+            // 
+            // flatNumeric_deployTime
+            // 
+            this.flatNumeric_deployTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.flatNumeric_deployTime.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.flatNumeric_deployTime.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.flatNumeric_deployTime.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.flatNumeric_deployTime.ForeColor = System.Drawing.Color.White;
+            this.flatNumeric_deployTime.Location = new System.Drawing.Point(157, 75);
+            this.flatNumeric_deployTime.Maximum = ((long)(1000));
+            this.flatNumeric_deployTime.Minimum = ((long)(50));
+            this.flatNumeric_deployTime.Name = "flatNumeric_deployTime";
+            this.flatNumeric_deployTime.Scale = 10;
+            this.flatNumeric_deployTime.Size = new System.Drawing.Size(75, 30);
+            this.flatNumeric_deployTime.TabIndex = 10;
+            this.flatNumeric_deployTime.Text = "50";
+            this.flatNumeric_deployTime.Value = ((long)(50));
+            this.flatNumeric_deployTime.ValueChange += new System.EventHandler(this.flatNumeric_deployTime_ValueChange);
+            this.flatNumeric_deployTime.Click += new System.EventHandler(this.flatNumeric_deployTime_Click);
             // 
             // flatComboBox_attackMode
             // 
@@ -562,7 +626,7 @@
             // flatTextBox_maxTrophy
             // 
             this.flatTextBox_maxTrophy.BackColor = System.Drawing.Color.Transparent;
-            this.flatTextBox_maxTrophy.Location = new System.Drawing.Point(157, 75);
+            this.flatTextBox_maxTrophy.Location = new System.Drawing.Point(157, 111);
             this.flatTextBox_maxTrophy.MaxLength = 4;
             this.flatTextBox_maxTrophy.Multiline = false;
             this.flatTextBox_maxTrophy.Name = "flatTextBox_maxTrophy";
@@ -582,7 +646,7 @@
             this.flatCheckBox_maxTrophy.Checked = false;
             this.flatCheckBox_maxTrophy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatCheckBox_maxTrophy.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.flatCheckBox_maxTrophy.Location = new System.Drawing.Point(50, 78);
+            this.flatCheckBox_maxTrophy.Location = new System.Drawing.Point(50, 112);
             this.flatCheckBox_maxTrophy.Name = "flatCheckBox_maxTrophy";
             this.flatCheckBox_maxTrophy.Options = FlatUITheme.FlatCheckBox._Options.Style1;
             this.flatCheckBox_maxTrophy.Size = new System.Drawing.Size(101, 22);
@@ -626,6 +690,16 @@
             // tabPage_manualTasks
             // 
             this.tabPage_manualTasks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage_manualTasks.Controls.Add(this.flatButton_resetStats);
+            this.tabPage_manualTasks.Controls.Add(this.flatLabel_statsDark);
+            this.tabPage_manualTasks.Controls.Add(this.flatLabel_statsElixir);
+            this.tabPage_manualTasks.Controls.Add(this.flatLabel_statsGold);
+            this.tabPage_manualTasks.Controls.Add(this.flatLabel_stats);
+            this.tabPage_manualTasks.Controls.Add(this.pictureBox_statsDark);
+            this.tabPage_manualTasks.Controls.Add(this.pictureBox_statsElixir);
+            this.tabPage_manualTasks.Controls.Add(this.pictureBox_statsGold);
+            this.tabPage_manualTasks.Controls.Add(this.flatButton_checkVersion);
+            this.tabPage_manualTasks.Controls.Add(this.flatButton_needHelp);
             this.tabPage_manualTasks.Controls.Add(this.flatLabel_manualTasks);
             this.tabPage_manualTasks.Controls.Add(this.flatButton_attack);
             this.tabPage_manualTasks.Controls.Add(this.flatButton_searchMode);
@@ -638,7 +712,130 @@
             this.tabPage_manualTasks.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_manualTasks.Size = new System.Drawing.Size(392, 394);
             this.tabPage_manualTasks.TabIndex = 4;
-            this.tabPage_manualTasks.Text = "Manual Tasks";
+            this.tabPage_manualTasks.Text = "Manual Tasks / Others";
+            // 
+            // flatButton_resetStats
+            // 
+            this.flatButton_resetStats.BackColor = System.Drawing.Color.Transparent;
+            this.flatButton_resetStats.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.flatButton_resetStats.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flatButton_resetStats.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.flatButton_resetStats.Location = new System.Drawing.Point(8, 300);
+            this.flatButton_resetStats.Name = "flatButton_resetStats";
+            this.flatButton_resetStats.Rounded = false;
+            this.flatButton_resetStats.Size = new System.Drawing.Size(100, 32);
+            this.flatButton_resetStats.TabIndex = 27;
+            this.flatButton_resetStats.Text = "Reset stats";
+            this.flatButton_resetStats.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.flatButton_resetStats.Click += new System.EventHandler(this.flatButton_resetStats_Click);
+            // 
+            // flatLabel_statsDark
+            // 
+            this.flatLabel_statsDark.AutoSize = true;
+            this.flatLabel_statsDark.BackColor = System.Drawing.Color.Transparent;
+            this.flatLabel_statsDark.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.flatLabel_statsDark.ForeColor = System.Drawing.Color.White;
+            this.flatLabel_statsDark.Location = new System.Drawing.Point(47, 266);
+            this.flatLabel_statsDark.Name = "flatLabel_statsDark";
+            this.flatLabel_statsDark.Size = new System.Drawing.Size(19, 21);
+            this.flatLabel_statsDark.TabIndex = 26;
+            this.flatLabel_statsDark.Text = "0";
+            // 
+            // flatLabel_statsElixir
+            // 
+            this.flatLabel_statsElixir.AutoSize = true;
+            this.flatLabel_statsElixir.BackColor = System.Drawing.Color.Transparent;
+            this.flatLabel_statsElixir.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.flatLabel_statsElixir.ForeColor = System.Drawing.Color.White;
+            this.flatLabel_statsElixir.Location = new System.Drawing.Point(47, 228);
+            this.flatLabel_statsElixir.Name = "flatLabel_statsElixir";
+            this.flatLabel_statsElixir.Size = new System.Drawing.Size(19, 21);
+            this.flatLabel_statsElixir.TabIndex = 25;
+            this.flatLabel_statsElixir.Text = "0";
+            // 
+            // flatLabel_statsGold
+            // 
+            this.flatLabel_statsGold.AutoSize = true;
+            this.flatLabel_statsGold.BackColor = System.Drawing.Color.Transparent;
+            this.flatLabel_statsGold.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.flatLabel_statsGold.ForeColor = System.Drawing.Color.White;
+            this.flatLabel_statsGold.Location = new System.Drawing.Point(47, 190);
+            this.flatLabel_statsGold.Name = "flatLabel_statsGold";
+            this.flatLabel_statsGold.Size = new System.Drawing.Size(19, 21);
+            this.flatLabel_statsGold.TabIndex = 24;
+            this.flatLabel_statsGold.Text = "0";
+            // 
+            // flatLabel_stats
+            // 
+            this.flatLabel_stats.AutoSize = true;
+            this.flatLabel_stats.BackColor = System.Drawing.Color.Transparent;
+            this.flatLabel_stats.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flatLabel_stats.ForeColor = System.Drawing.Color.White;
+            this.flatLabel_stats.Location = new System.Drawing.Point(8, 162);
+            this.flatLabel_stats.Name = "flatLabel_stats";
+            this.flatLabel_stats.Size = new System.Drawing.Size(51, 21);
+            this.flatLabel_stats.TabIndex = 23;
+            this.flatLabel_stats.Text = "Stats :";
+            // 
+            // pictureBox_statsDark
+            // 
+            this.pictureBox_statsDark.Image = global::Clash_of_Bots.Properties.Resources.dark;
+            this.pictureBox_statsDark.Location = new System.Drawing.Point(9, 262);
+            this.pictureBox_statsDark.Name = "pictureBox_statsDark";
+            this.pictureBox_statsDark.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox_statsDark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_statsDark.TabIndex = 22;
+            this.pictureBox_statsDark.TabStop = false;
+            // 
+            // pictureBox_statsElixir
+            // 
+            this.pictureBox_statsElixir.Image = global::Clash_of_Bots.Properties.Resources.elixir;
+            this.pictureBox_statsElixir.Location = new System.Drawing.Point(9, 224);
+            this.pictureBox_statsElixir.Name = "pictureBox_statsElixir";
+            this.pictureBox_statsElixir.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox_statsElixir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_statsElixir.TabIndex = 21;
+            this.pictureBox_statsElixir.TabStop = false;
+            // 
+            // pictureBox_statsGold
+            // 
+            this.pictureBox_statsGold.Image = global::Clash_of_Bots.Properties.Resources.gold;
+            this.pictureBox_statsGold.Location = new System.Drawing.Point(9, 186);
+            this.pictureBox_statsGold.Name = "pictureBox_statsGold";
+            this.pictureBox_statsGold.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox_statsGold.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_statsGold.TabIndex = 20;
+            this.pictureBox_statsGold.TabStop = false;
+            // 
+            // flatButton_checkVersion
+            // 
+            this.flatButton_checkVersion.BackColor = System.Drawing.Color.Transparent;
+            this.flatButton_checkVersion.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.flatButton_checkVersion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flatButton_checkVersion.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.flatButton_checkVersion.Location = new System.Drawing.Point(204, 356);
+            this.flatButton_checkVersion.Name = "flatButton_checkVersion";
+            this.flatButton_checkVersion.Rounded = false;
+            this.flatButton_checkVersion.Size = new System.Drawing.Size(180, 32);
+            this.flatButton_checkVersion.TabIndex = 4;
+            this.flatButton_checkVersion.Text = "Check version";
+            this.flatButton_checkVersion.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.flatButton_checkVersion.Click += new System.EventHandler(this.flatButton_checkVersion_Click);
+            // 
+            // flatButton_needHelp
+            // 
+            this.flatButton_needHelp.BackColor = System.Drawing.Color.Transparent;
+            this.flatButton_needHelp.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.flatButton_needHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flatButton_needHelp.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.flatButton_needHelp.Location = new System.Drawing.Point(8, 356);
+            this.flatButton_needHelp.Name = "flatButton_needHelp";
+            this.flatButton_needHelp.Rounded = false;
+            this.flatButton_needHelp.Size = new System.Drawing.Size(180, 32);
+            this.flatButton_needHelp.TabIndex = 5;
+            this.flatButton_needHelp.Text = "Need help ?";
+            this.flatButton_needHelp.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.flatButton_needHelp.Click += new System.EventHandler(this.flatButton_needHelp_Click);
             // 
             // flatLabel_manualTasks
             // 
@@ -646,7 +843,7 @@
             this.flatLabel_manualTasks.BackColor = System.Drawing.Color.Transparent;
             this.flatLabel_manualTasks.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.flatLabel_manualTasks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.flatLabel_manualTasks.Location = new System.Drawing.Point(80, 336);
+            this.flatLabel_manualTasks.Location = new System.Drawing.Point(80, 117);
             this.flatLabel_manualTasks.Name = "flatLabel_manualTasks";
             this.flatLabel_manualTasks.Size = new System.Drawing.Size(232, 19);
             this.flatLabel_manualTasks.TabIndex = 19;
@@ -658,10 +855,10 @@
             this.flatButton_attack.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.flatButton_attack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatButton_attack.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.flatButton_attack.Location = new System.Drawing.Point(8, 278);
+            this.flatButton_attack.Location = new System.Drawing.Point(9, 82);
             this.flatButton_attack.Name = "flatButton_attack";
             this.flatButton_attack.Rounded = false;
-            this.flatButton_attack.Size = new System.Drawing.Size(376, 32);
+            this.flatButton_attack.Size = new System.Drawing.Size(179, 32);
             this.flatButton_attack.TabIndex = 18;
             this.flatButton_attack.Text = "Attack";
             this.flatButton_attack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -673,10 +870,10 @@
             this.flatButton_searchMode.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.flatButton_searchMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatButton_searchMode.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.flatButton_searchMode.Location = new System.Drawing.Point(8, 226);
+            this.flatButton_searchMode.Location = new System.Drawing.Point(204, 82);
             this.flatButton_searchMode.Name = "flatButton_searchMode";
             this.flatButton_searchMode.Rounded = false;
-            this.flatButton_searchMode.Size = new System.Drawing.Size(376, 32);
+            this.flatButton_searchMode.Size = new System.Drawing.Size(181, 32);
             this.flatButton_searchMode.TabIndex = 17;
             this.flatButton_searchMode.Text = "Search Mode";
             this.flatButton_searchMode.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -688,10 +885,10 @@
             this.flatButton_trainTroops.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.flatButton_trainTroops.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatButton_trainTroops.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.flatButton_trainTroops.Location = new System.Drawing.Point(8, 171);
+            this.flatButton_trainTroops.Location = new System.Drawing.Point(9, 44);
             this.flatButton_trainTroops.Name = "flatButton_trainTroops";
             this.flatButton_trainTroops.Rounded = false;
-            this.flatButton_trainTroops.Size = new System.Drawing.Size(376, 32);
+            this.flatButton_trainTroops.Size = new System.Drawing.Size(179, 32);
             this.flatButton_trainTroops.TabIndex = 16;
             this.flatButton_trainTroops.Text = "Train troops";
             this.flatButton_trainTroops.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -703,10 +900,10 @@
             this.flatButton_collectResources.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.flatButton_collectResources.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatButton_collectResources.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.flatButton_collectResources.Location = new System.Drawing.Point(8, 116);
+            this.flatButton_collectResources.Location = new System.Drawing.Point(204, 44);
             this.flatButton_collectResources.Name = "flatButton_collectResources";
             this.flatButton_collectResources.Rounded = false;
-            this.flatButton_collectResources.Size = new System.Drawing.Size(376, 32);
+            this.flatButton_collectResources.Size = new System.Drawing.Size(181, 32);
             this.flatButton_collectResources.TabIndex = 15;
             this.flatButton_collectResources.Text = "Collect resources";
             this.flatButton_collectResources.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -718,10 +915,10 @@
             this.flatButton_locateBarracks.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.flatButton_locateBarracks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatButton_locateBarracks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.flatButton_locateBarracks.Location = new System.Drawing.Point(8, 61);
+            this.flatButton_locateBarracks.Location = new System.Drawing.Point(9, 6);
             this.flatButton_locateBarracks.Name = "flatButton_locateBarracks";
             this.flatButton_locateBarracks.Rounded = false;
-            this.flatButton_locateBarracks.Size = new System.Drawing.Size(376, 32);
+            this.flatButton_locateBarracks.Size = new System.Drawing.Size(179, 32);
             this.flatButton_locateBarracks.TabIndex = 14;
             this.flatButton_locateBarracks.Text = "Locate barracks";
             this.flatButton_locateBarracks.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -733,10 +930,10 @@
             this.flatButton_locateCollectors.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.flatButton_locateCollectors.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flatButton_locateCollectors.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.flatButton_locateCollectors.Location = new System.Drawing.Point(8, 6);
+            this.flatButton_locateCollectors.Location = new System.Drawing.Point(204, 6);
             this.flatButton_locateCollectors.Name = "flatButton_locateCollectors";
             this.flatButton_locateCollectors.Rounded = false;
-            this.flatButton_locateCollectors.Size = new System.Drawing.Size(376, 32);
+            this.flatButton_locateCollectors.Size = new System.Drawing.Size(181, 32);
             this.flatButton_locateCollectors.TabIndex = 13;
             this.flatButton_locateCollectors.Text = "Locate collectors";
             this.flatButton_locateCollectors.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -768,6 +965,11 @@
             this.flatMini1.Text = "flatMini1";
             this.flatMini1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             // 
+            // timer_runningTime
+            // 
+            this.timer_runningTime.Interval = 1000;
+            this.timer_runningTime.Tick += new System.EventHandler(this.timer_runningTime_Tick);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -782,6 +984,7 @@
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Load += new System.EventHandler(this.HomeForm_Load);
             this.formSkin1.ResumeLayout(false);
+            this.formSkin1.PerformLayout();
             this.flatTabControl1.ResumeLayout(false);
             this.tabPage_general.ResumeLayout(false);
             this.tabPage_searchTroops.ResumeLayout(false);
@@ -790,6 +993,9 @@
             this.tabPage_attackDonate.PerformLayout();
             this.tabPage_manualTasks.ResumeLayout(false);
             this.tabPage_manualTasks.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_statsDark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_statsElixir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_statsGold)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -839,6 +1045,20 @@
         private FlatUITheme.FlatLabel flatLabel_manualTasks;
         private FlatUITheme.FlatLabel flatLabel5;
         private FlatUITheme.FlatComboBox flatComboBox_attackMode;
+        private FlatUITheme.FlatNumeric flatNumeric_deployTime;
+        private FlatUITheme.FlatLabel flatLabel6;
+        private FlatUITheme.FlatButton flatButton_checkVersion;
+        private FlatUITheme.FlatButton flatButton_needHelp;
+        private FlatUITheme.FlatLabel flatLabel_runningTime;
+        private System.Windows.Forms.Timer timer_runningTime;
+        private System.Windows.Forms.PictureBox pictureBox_statsDark;
+        private System.Windows.Forms.PictureBox pictureBox_statsElixir;
+        private System.Windows.Forms.PictureBox pictureBox_statsGold;
+        private FlatUITheme.FlatLabel flatLabel_stats;
+        private FlatUITheme.FlatLabel flatLabel_statsGold;
+        private FlatUITheme.FlatLabel flatLabel_statsDark;
+        private FlatUITheme.FlatLabel flatLabel_statsElixir;
+        private FlatUITheme.FlatButton flatButton_resetStats;
 
 
 

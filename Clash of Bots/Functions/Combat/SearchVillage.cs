@@ -41,15 +41,15 @@ namespace Clash_of_Bots
                     hasDark = true;
                 else
                     hasDark = false;
-                goldFound = Read.GetNumber(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("gold", Settings.xDif, Settings.yDif)));
-                elixirFound = Read.GetNumber(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("elixir", Settings.xDif, Settings.yDif)));
+                goldFound = Read.GetNumberResources(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("gold", Settings.xDif, Settings.yDif)));
+                elixirFound = Read.GetNumberResources(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("elixir", Settings.xDif, Settings.yDif)));
                 if (hasDark)
                 {
-                    darkFound = Read.GetNumber(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("dark", Settings.xDif, Settings.yDif)));
-                    trophyFound = Read.GetNumber(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("trophy_dark", Settings.xDif, Settings.yDif)));
+                    darkFound = Read.GetNumberResources(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("dark", Settings.xDif, Settings.yDif)));
+                    trophyFound = Read.GetNumberResources(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("trophy_dark", Settings.xDif, Settings.yDif)));
                 }
                 else
-                    trophyFound = Read.GetNumber(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("trophy", Settings.xDif, Settings.yDif)));
+                    trophyFound = Read.GetNumberResources(Home.bsProcess.image.CaptureRegion(Buttons.GetResourcesRec("trophy", Settings.xDif, Settings.yDif)));
                 Log.SetLog("[G] : " + goldFound + " [E] : " + elixirFound + " [D] : " + darkFound + " [T] : " + trophyFound);
                 if(CompareResources(goldFound, elixirFound, darkFound, trophyFound))
                 {

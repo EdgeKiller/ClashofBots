@@ -15,7 +15,7 @@ namespace Clash_of_Bots
             FlatCheckBox checkboxDark, FlatCheckBox checkboxTrophy,
             FlatCheckBox checkboxAlert, FlatComboBox comboBoxAttackSides,
             FlatCheckBox checkboxMaxTrophy, FlatTextBox textboxMaxTrophy,
-            FlatComboBox comboBoxAttackMode)
+            FlatComboBox comboBoxAttackMode, FlatNumeric numericDeployTime)
         {
             FileIniDataParser parser = new FileIniDataParser();
             IniData data = parser.ReadFile("config.ini");
@@ -70,6 +70,10 @@ namespace Clash_of_Bots
             int attackMode = Convert.ToInt32(data["attack"]["mode"]);
             Action action17 = () => comboBoxAttackMode.SelectedIndex = attackMode;
             comboBoxAttackMode.Invoke(action17);
+            int deployTime = Convert.ToInt32(data["attack"]["deploytime"]);
+            Action action18 = () => numericDeployTime.Value = deployTime;
+            numericDeployTime.Invoke(action18);
+
         }
 
     }

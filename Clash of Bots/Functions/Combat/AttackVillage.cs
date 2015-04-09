@@ -25,6 +25,7 @@ namespace Clash_of_Bots
             IniData data = parser.ReadFile("config.ini");
             int sideToAttack = Convert.ToInt32(data["attack"]["sides"]);
             int attackMode = Convert.ToInt32(data["attack"]["mode"]);
+            int deployTime = Convert.ToInt32(data["attack"]["deploytime"]);
             switch (sideToAttack)
             {
                 case 0:
@@ -83,7 +84,7 @@ namespace Clash_of_Bots
                             Random randY = new Random();
                             Point randPoint = new Point(point.X + randX.Next(-2, 3) + Settings.xDif, point.Y + randY.Next(-2, 3) + Settings.yDif);
                             Home.bsProcess.mouse.SendClick(WButton.Left, randPoint, false);
-                            Thread.Sleep(50);
+                            Thread.Sleep(deployTime);
                         }
                     }
                 }
@@ -93,6 +94,16 @@ namespace Clash_of_Bots
             {
                 Thread.Sleep(5000);
             }
+            Thread.Sleep(1000);
+            int goldGain = Read.GetNumberGain(Home.bsProcess.image.CaptureRegion(Buttons.GetGainRec("gold", Settings.xDif, Settings.yDif)));
+            int elixirGain = Read.GetNumberGain(Home.bsProcess.image.CaptureRegion(Buttons.GetGainRec("elixir", Settings.xDif, Settings.yDif)));
+            int darkGain = 0;
+            if(ColorDif.isCorrect(Home.bsProcess.image.GetPixelColor(new Point(460 + Settings.xDif, 400 + Settings.yDif)), Color.FromArgb(104,91,112)))
+                darkGain = Read.GetNumberGain(Home.bsProcess.image.CaptureRegion(Buttons.GetGainRec("dark", Settings.xDif, Settings.yDif)));
+            Home.goldGain += goldGain;
+            Home.elixirGain += elixirGain;
+            Home.darkGain += darkGain;
+            Thread.Sleep(500);
             Home.bsProcess.mouse.SendClick(WButton.Left, new Point(440 + Settings.xDif, 560 + Settings.yDif), false);
         }
 

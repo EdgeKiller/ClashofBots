@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon33.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -79,7 +79,7 @@
     </Reference>
     <Reference Include="FlatUITheme, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Others\FlatUITheme\FlatUITheme\bin\Debug\FlatUITheme.dll</HintPath>
+      <HintPath>..\..\@Others\FlatUITheme\FlatUITheme\bin\Debug\FlatUITheme.dll</HintPath>
     </Reference>
     <Reference Include="INIFileParser, Version=2.1.0.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -165,6 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="icon33.ico" />
+    <None Include="Resources\dark.png" />
+    <None Include="Resources\trophy.png" />
+    <None Include="Resources\gold.png" />
+    <None Include="Resources\gem.png" />
+    <None Include="Resources\elixir.png" />
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
