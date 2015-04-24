@@ -44,8 +44,6 @@ namespace Clash_of_Bots
         }
 
         #region BGWORKER_REM
-        //BGWORKER_CHECKKEY
-        BackgroundWorker bg_checkKey = new BackgroundWorker();
         //BGWORKER_UNZOOM
         BackgroundWorker bg_unzoom = new BackgroundWorker();
         //BGWORKER_CONFIGLOAD
