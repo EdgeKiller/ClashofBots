@@ -44,8 +44,6 @@ namespace Clash_of_Bots
         }
 
         #region BGWORKER_REM
-        //BGWORKER_CHECKKEY
-        BackgroundWorker bg_checkKey = new BackgroundWorker();
         //BGWORKER_UNZOOM
         BackgroundWorker bg_unzoom = new BackgroundWorker();
         //BGWORKER_CONFIGLOAD
@@ -84,6 +82,20 @@ namespace Clash_of_Bots
             Settings.yDif = dif.Height;
             #endregion
             Log.Init(flatListBox_log, flatStatusBar_status);
+
+            // Check to make sure config.ini exists.
+            if (!System.IO.File.Exists(Application.StartupPath + "\\config.ini"))
+            {
+                CreateFile.Create("config.ini");
+            }
+
+            // Check to make sure config.ini exists.
+            if (!System.IO.File.Exists(Application.StartupPath + "\\860x720.reg"))
+            {
+                CreateFile.Create("860x720.reg");
+            }
+            
+
             #region BGWORKERS_INIT
             //BGWORKER_UNZOOM
             bg_unzoom.DoWork += new DoWorkEventHandler(bgWorker_unzoom_DoWork);
@@ -269,6 +281,7 @@ namespace Clash_of_Bots
         private void bgWorker_loadconfig_DoWork(object sender, DoWorkEventArgs e)
         {
             Zoom.UnZoom();
+
             Log.SetLog("Loading config file...");
             LoadConfig.Load(flatComboBox_barrack1, flatComboBox_barrack2, flatComboBox_barrack3, flatComboBox_barrack4,
                 flatTextBox_gold, flatTextBox_elixir, flatTextBox_dark, flatTextBox_trophy,
