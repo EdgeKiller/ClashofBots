@@ -6,8 +6,6 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -27,8 +25,7 @@ namespace Clash_of_Bots
     public partial class Home : Form
     {
         private long runningTimeSecond = 0;
-
-        public static int goldGain = 0, elixirGain = 0, darkGain = 0;
+		public static int goldGain = 0, elixirGain = 0, darkGain = 0;
 
         public static BotProcess bsProcess;
         static bool isHide;
@@ -44,8 +41,6 @@ namespace Clash_of_Bots
         }
 
         #region BGWORKER_REM
-        //BGWORKER_CHECKKEY
-        BackgroundWorker bg_checkKey = new BackgroundWorker();
         //BGWORKER_UNZOOM
         BackgroundWorker bg_unzoom = new BackgroundWorker();
         //BGWORKER_CONFIGLOAD
@@ -84,6 +79,21 @@ namespace Clash_of_Bots
             Settings.yDif = dif.Height;
             #endregion
             Log.Init(flatListBox_log, flatStatusBar_status);
+
+            #region VerifyConfigFile
+            // Check to make sure config.ini exists.
+            if (!System.IO.File.Exists(Application.StartupPath + "\\config.ini"))
+            {
+                CreateFile.Create("config.ini");
+            }
+
+            // Check to make sure config.ini exists.
+            if (!System.IO.File.Exists(Application.StartupPath + "\\860x720.reg"))
+            {
+                CreateFile.Create("860x720.reg");
+            }
+            #endregion
+
             #region BGWORKERS_INIT
             //BGWORKER_UNZOOM
             bg_unzoom.DoWork += new DoWorkEventHandler(bgWorker_unzoom_DoWork);

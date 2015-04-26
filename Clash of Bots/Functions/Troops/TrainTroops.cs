@@ -59,7 +59,7 @@ namespace Clash_of_Bots
                 else
                     Home.bsProcess.mouse.SendClick(WButton.Left, Buttons.GetPos("4_4", Settings.xDif, Settings.yDif), false);
                 Thread.Sleep(500);
-                if (ColorDif.isCorrect(Home.bsProcess.image.GetPixelColor(Buttons.GetPos("troop_ready", Settings.xDif, Settings.yDif)), Color.FromArgb(208, 68, 80)))
+                if (ColorDif.isCorrect(Home.bsProcess.image.GetPixelColor(Buttons.GetPos("troop_ready", Settings.xDif, Settings.yDif)), Color.FromArgb(216, 72, 81)))
                 {
                     Home.bsProcess.mouse.SendClick(WButton.Left, new Point(0, 0), false);
                     Thread.Sleep(500);

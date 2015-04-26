@@ -104,6 +104,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\Utils\CreateFile.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
