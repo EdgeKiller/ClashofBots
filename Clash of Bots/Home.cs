@@ -43,8 +43,6 @@ namespace Clash_of_Bots
         #region BGWORKER_REM
         //BGWORKER_UNZOOM
         BackgroundWorker bg_unzoom = new BackgroundWorker();
-        //BGWORKER_CONFIGLOAD
-        BackgroundWorker bg_loadconfig = new BackgroundWorker();
         //BGWORKER_COLLECTRESOURCES
         BackgroundWorker bg_collectResources = new BackgroundWorker();
         //BGWORKER_TRAINTROOPS
@@ -98,9 +96,6 @@ namespace Clash_of_Bots
             //BGWORKER_UNZOOM
             bg_unzoom.DoWork += new DoWorkEventHandler(bgWorker_unzoom_DoWork);
             bg_unzoom.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_unzoom_Finish);
-            //BGWORKER_CONFIGLOAD
-            bg_loadconfig.DoWork += new DoWorkEventHandler(bgWorker_loadconfig_DoWork);
-            bg_loadconfig.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_loadconfig_Finish);
             //BGWORKER_COLLECTRESOURCES
             bg_collectResources.DoWork += new DoWorkEventHandler(bgWorker_collectresources_DoWork);
             bg_collectResources.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_collectresources_Finish);
@@ -118,7 +113,16 @@ namespace Clash_of_Bots
             bg_play.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_play_Finish);
             #endregion
             botStatus = Status.Free;
-            bg_loadconfig.RunWorkerAsync();
+
+            #region LoadConfig
+            Log.SetLog("Loading config file...");
+            LoadConfig.Load(flatComboBox_barrack1, flatComboBox_barrack2, flatComboBox_barrack3, flatComboBox_barrack4,
+                flatTextBox_gold, flatTextBox_elixir, flatTextBox_dark, flatTextBox_trophy,
+                flatCheckBox_gold, flatCheckBox_elixir, flatCheckBox_dark, flatCheckBox_trophy,
+                flatCheckBox_alert, flatComboBox_sidesToAttack, flatCheckBox_maxTrophy, flatTextBox_maxTrophy, flatComboBox_attackMode,
+                flatNumeric_deployTime);
+            Log.SetLog("Load complete.");
+            #endregion
             bg_unzoom.RunWorkerAsync();
 
             flatNumeric_deployTime.ValueChange += new EventHandler(flatNumeric_deployTime_ValueChange);
@@ -272,24 +276,6 @@ namespace Clash_of_Bots
         {
             Log.SetLog("Unzoom complete.");
             bg_unzoom.Dispose();
-        }
-        #endregion
-
-        #region BGWORKER_LOADCONFIG
-        private void bgWorker_loadconfig_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Zoom.UnZoom();
-            Log.SetLog("Loading config file...");
-            LoadConfig.Load(flatComboBox_barrack1, flatComboBox_barrack2, flatComboBox_barrack3, flatComboBox_barrack4,
-                flatTextBox_gold, flatTextBox_elixir, flatTextBox_dark, flatTextBox_trophy,
-                flatCheckBox_gold, flatCheckBox_elixir, flatCheckBox_dark, flatCheckBox_trophy,
-                flatCheckBox_alert, flatComboBox_sidesToAttack, flatCheckBox_maxTrophy, flatTextBox_maxTrophy, flatComboBox_attackMode,
-                flatNumeric_deployTime);
-        }
-        private void bgWorker_loadconfig_Finish(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Log.SetLog("Load complete.");
-            bg_loadconfig.Dispose();
         }
         #endregion
 
