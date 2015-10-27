@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace Clash_of_Bots
+namespace Clash_of_Bots.Utils
 {
     public class AbortableBackgroundWorker : BackgroundWorker
     {
-
-        private Thread workerThread;
+        Thread workerThread;
 
         protected override void OnDoWork(DoWorkEventArgs e)
         {
@@ -22,12 +16,10 @@ namespace Clash_of_Bots
             }
             catch (ThreadAbortException)
             {
-                
-                e.Cancel = true; //We must set Cancel property to true!
-                Thread.ResetAbort(); //Prevents ThreadAbortException propagation
+                e.Cancel = true;
+                Thread.ResetAbort();
             }
         }
-
 
         public void Abort()
         {
