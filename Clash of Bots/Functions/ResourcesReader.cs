@@ -34,6 +34,37 @@ namespace Clash_of_Bots.Functions
             return Convert.ToInt32(result);
         }
 
+        public static int ReadTrophy(Bitmap image)
+        {
+            List<PointInt> res = new List<PointInt>();
+            List<Point> actual = new List<Point>();
+
+            string result = "";
+
+            for (int i = 0; i <= 9; i++)
+            {
+                actual = findPositions(image, System.Drawing.Image.FromFile(AppSettings.Images.resourcesPath + "w" + i + ".png") as Bitmap);
+                foreach (Point p in actual)
+                {
+                    res.Add(new PointInt(p, i));
+                }
+            }
+
+            res.Sort(Comparison);
+
+            foreach (PointInt p in res)
+            {
+                result += p.Value;
+            }
+
+            actual = findPositions(image, System.Drawing.Image.FromFile(AppSettings.Images.resourcesPath + "w-.png") as Bitmap);
+
+            if (actual.Count > 0)
+                result = "-" + result;
+
+            return Convert.ToInt32(result);
+        }
+
         static List<Point> findPositions(Bitmap big, Bitmap small)
         {
             List<Point> result = new List<Point>();

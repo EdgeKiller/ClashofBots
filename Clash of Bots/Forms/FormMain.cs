@@ -51,6 +51,9 @@ namespace Clash_of_Bots.Forms
             flatCheckBox_attackTopRight.Checked = Convert.ToBoolean(bot.cfgData["attack"]["topright"]);
             flatCheckBox_attackBottomLeft.Checked = Convert.ToBoolean(bot.cfgData["attack"]["bottomleft"]);
             flatCheckBox_attackBottomRight.Checked = Convert.ToBoolean(bot.cfgData["attack"]["bottomright"]);
+
+            //Attack mode
+            flatComboBox_attackMode.SelectedIndex = Convert.ToInt32(bot.cfgData["attack"]["mode"]);
         }
 
         private void bot_OnStateChanged(BotState state)
@@ -134,6 +137,13 @@ namespace Clash_of_Bots.Forms
             bot.SaveConfig();
         }
 
+        private void flatComboBox_attackMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FlatComboBox fcb = sender as FlatComboBox;
+            bot.cfgData["attack"]["mode"] = fcb.SelectedIndex.ToString();
+            bot.SaveConfig();
+        }
+
         private void flatButton1_Click(object sender, EventArgs e)
         {
             using (WebClient wc = new WebClient())
@@ -162,6 +172,26 @@ namespace Clash_of_Bots.Forms
 
             bot.cfgData["attack"][fcb.Tag.ToString()] = fcb.Checked.ToString();
             bot.SaveConfig();
+        }
+
+        private void flatButton_debugScript_Click(object sender, EventArgs e)
+        {
+            bot.StartDebug();
+        }
+
+        private void flatButton_hideModeCheck_Click(object sender, EventArgs e)
+        {
+            Bitmap img = bot.bs.image.GetWindowImage();
+            Color pixel1 = img.GetPixel(150, 150);
+            Color pixel2 = img.GetPixel(400, 400);
+            Color pixel3 = img.GetPixel(600, 600);
+            Color black = Color.FromArgb(255, 0, 0, 0);
+
+            if (pixel1 == black && pixel2 == black && pixel3 == black)
+                MessageBox.Show("Sorry but you cant use Hide Mode, uncheck this option.", "Fail");
+            else
+                MessageBox.Show("You can use Hide Mode.", "Success");
+
         }
     }
 }

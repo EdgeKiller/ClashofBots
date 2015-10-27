@@ -56,7 +56,9 @@
             this.flatNumeric_minElixir = new FlatUITheme.FlatNumeric();
             this.flatNumeric_minGold = new FlatUITheme.FlatNumeric();
             this.tabPage_attackDonate = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_attackMode = new System.Windows.Forms.Label();
+            this.flatComboBox_attackMode = new FlatUITheme.FlatComboBox();
+            this.label_sidesToAttack = new System.Windows.Forms.Label();
             this.flatCheckBox_attackBottomRight = new FlatUITheme.FlatCheckBox();
             this.flatCheckBox_attackBottomLeft = new FlatUITheme.FlatCheckBox();
             this.flatCheckBox_attackTopRight = new FlatUITheme.FlatCheckBox();
@@ -74,6 +76,8 @@
             this.pictureBox_statElixir = new System.Windows.Forms.PictureBox();
             this.pictureBox_statGold = new System.Windows.Forms.PictureBox();
             this.tabPage_debuginfo = new System.Windows.Forms.TabPage();
+            this.flatButton_hideModeCheck = new FlatUITheme.FlatButton();
+            this.flatButton_debugScript = new FlatUITheme.FlatButton();
             this.flatButton1 = new FlatUITheme.FlatButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -561,7 +565,9 @@
             // tabPage_attackDonate
             // 
             this.tabPage_attackDonate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage_attackDonate.Controls.Add(this.label2);
+            this.tabPage_attackDonate.Controls.Add(this.label_attackMode);
+            this.tabPage_attackDonate.Controls.Add(this.flatComboBox_attackMode);
+            this.tabPage_attackDonate.Controls.Add(this.label_sidesToAttack);
             this.tabPage_attackDonate.Controls.Add(this.flatCheckBox_attackBottomRight);
             this.tabPage_attackDonate.Controls.Add(this.flatCheckBox_attackBottomLeft);
             this.tabPage_attackDonate.Controls.Add(this.flatCheckBox_attackTopRight);
@@ -574,15 +580,43 @@
             this.tabPage_attackDonate.TabIndex = 2;
             this.tabPage_attackDonate.Text = "Attack/Donate Settings";
             // 
-            // label2
+            // label_attackMode
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Ubuntu", 12F);
-            this.label2.Location = new System.Drawing.Point(8, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Side(s) to attack :";
+            this.label_attackMode.AutoSize = true;
+            this.label_attackMode.Location = new System.Drawing.Point(9, 84);
+            this.label_attackMode.Name = "label_attackMode";
+            this.label_attackMode.Size = new System.Drawing.Size(96, 18);
+            this.label_attackMode.TabIndex = 6;
+            this.label_attackMode.Text = "Attack mode :";
+            // 
+            // flatComboBox_attackMode
+            // 
+            this.flatComboBox_attackMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.flatComboBox_attackMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flatComboBox_attackMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.flatComboBox_attackMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flatComboBox_attackMode.Font = new System.Drawing.Font("Ubuntu", 8F);
+            this.flatComboBox_attackMode.ForeColor = System.Drawing.Color.White;
+            this.flatComboBox_attackMode.FormattingEnabled = true;
+            this.flatComboBox_attackMode.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.flatComboBox_attackMode.ItemHeight = 18;
+            this.flatComboBox_attackMode.Items.AddRange(new object[] {
+            "Barbarians + Archers"});
+            this.flatComboBox_attackMode.Location = new System.Drawing.Point(111, 82);
+            this.flatComboBox_attackMode.Name = "flatComboBox_attackMode";
+            this.flatComboBox_attackMode.Size = new System.Drawing.Size(200, 24);
+            this.flatComboBox_attackMode.TabIndex = 5;
+            this.flatComboBox_attackMode.SelectedIndexChanged += new System.EventHandler(this.flatComboBox_attackMode_SelectedIndexChanged);
+            // 
+            // label_sidesToAttack
+            // 
+            this.label_sidesToAttack.AutoSize = true;
+            this.label_sidesToAttack.Font = new System.Drawing.Font("Ubuntu", 12F);
+            this.label_sidesToAttack.Location = new System.Drawing.Point(8, 9);
+            this.label_sidesToAttack.Name = "label_sidesToAttack";
+            this.label_sidesToAttack.Size = new System.Drawing.Size(132, 20);
+            this.label_sidesToAttack.TabIndex = 4;
+            this.label_sidesToAttack.Text = "Side(s) to attack :";
             // 
             // flatCheckBox_attackBottomRight
             // 
@@ -793,6 +827,8 @@
             // tabPage_debuginfo
             // 
             this.tabPage_debuginfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage_debuginfo.Controls.Add(this.flatButton_hideModeCheck);
+            this.tabPage_debuginfo.Controls.Add(this.flatButton_debugScript);
             this.tabPage_debuginfo.Controls.Add(this.flatButton1);
             this.tabPage_debuginfo.Controls.Add(this.richTextBox1);
             this.tabPage_debuginfo.Controls.Add(this.pictureBox2);
@@ -806,6 +842,36 @@
             this.tabPage_debuginfo.Size = new System.Drawing.Size(492, 394);
             this.tabPage_debuginfo.TabIndex = 4;
             this.tabPage_debuginfo.Text = "Info & Debug";
+            // 
+            // flatButton_hideModeCheck
+            // 
+            this.flatButton_hideModeCheck.BackColor = System.Drawing.Color.Transparent;
+            this.flatButton_hideModeCheck.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.flatButton_hideModeCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flatButton_hideModeCheck.Font = new System.Drawing.Font("Ubuntu", 10F);
+            this.flatButton_hideModeCheck.Location = new System.Drawing.Point(254, 287);
+            this.flatButton_hideModeCheck.Name = "flatButton_hideModeCheck";
+            this.flatButton_hideModeCheck.Rounded = false;
+            this.flatButton_hideModeCheck.Size = new System.Drawing.Size(232, 32);
+            this.flatButton_hideModeCheck.TabIndex = 8;
+            this.flatButton_hideModeCheck.Text = "Can i use Hide Mode ?";
+            this.flatButton_hideModeCheck.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.flatButton_hideModeCheck.Click += new System.EventHandler(this.flatButton_hideModeCheck_Click);
+            // 
+            // flatButton_debugScript
+            // 
+            this.flatButton_debugScript.BackColor = System.Drawing.Color.Transparent;
+            this.flatButton_debugScript.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.flatButton_debugScript.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flatButton_debugScript.Font = new System.Drawing.Font("Ubuntu", 10F);
+            this.flatButton_debugScript.Location = new System.Drawing.Point(254, 249);
+            this.flatButton_debugScript.Name = "flatButton_debugScript";
+            this.flatButton_debugScript.Rounded = false;
+            this.flatButton_debugScript.Size = new System.Drawing.Size(232, 32);
+            this.flatButton_debugScript.TabIndex = 7;
+            this.flatButton_debugScript.Text = "Start debug script";
+            this.flatButton_debugScript.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.flatButton_debugScript.Click += new System.EventHandler(this.flatButton_debugScript_Click);
             // 
             // flatButton1
             // 
@@ -829,9 +895,11 @@
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.richTextBox1.Location = new System.Drawing.Point(8, 57);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(476, 84);
+            this.richTextBox1.Size = new System.Drawing.Size(476, 66);
             this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.Text = "Clash of Bots is a free and open source bot for the game Clash of Clans.\nOfficial" +
+    " website : http://clashofbots.edgekiller.fr/\nSource (Github) : https://github.co" +
+    "m/EdgeKiller/ClashofBots";
             // 
             // pictureBox2
             // 
@@ -920,7 +988,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Clash of Bots • Alpha 0.5.0 • EdgeKiller";
+            this.Text = "s";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.formSkin_main.ResumeLayout(false);
             this.flatTabControl1.ResumeLayout(false);
@@ -995,9 +1063,13 @@
         private FlatUITheme.FlatCheckBox flatCheckBox_attackTopRight;
         private FlatUITheme.FlatCheckBox flatCheckBox_attackBottomRight;
         private FlatUITheme.FlatCheckBox flatCheckBox_attackBottomLeft;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_sidesToAttack;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private FlatUITheme.FlatButton flatButton1;
+        private FlatUITheme.FlatButton flatButton_debugScript;
+        private FlatUITheme.FlatComboBox flatComboBox_attackMode;
+        private System.Windows.Forms.Label label_attackMode;
+        private FlatUITheme.FlatButton flatButton_hideModeCheck;
     }
 }

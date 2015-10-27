@@ -32,7 +32,8 @@
             public static string Train = ScriptFolder + "train.js",
                 Search = ScriptFolder + "search.js",
                 Attack = ScriptFolder + "attack.js",
-                Collect = ScriptFolder + "collect.js";
+                Collect = ScriptFolder + "collect.js",
+                Debug = ScriptFolder + "debug.js";
         }
     }
 }

@@ -108,13 +108,19 @@ namespace Clash_of_Bots.BotPackage
                 js.Execute(File.ReadAllText(AppSettings.Script.Search));
 
                 //Run attack script
-                //js.Execute(File.ReadAllText(AppSettings.Script.Attack));
+                js.Execute(File.ReadAllText(AppSettings.Script.Attack));
 
             }
 
             Stop();
 
             botState = BotState.Free;
+        }
+
+        public void StartDebug()
+        {
+            // Run debug script
+            js.Execute(File.ReadAllText(AppSettings.Script.Debug));
         }
 
         public void Unzoom()
@@ -166,7 +172,7 @@ namespace Clash_of_Bots.BotPackage
             {
                 Action action = () => logListBox.AddItem("[" + DateTime.Now + "] " + message);
                 logListBox.Invoke(action);
-                
+
                 if (logListBox.CountItem() > 17)
                 {
                     Action action1 = () => logListBox.SelectIndex(logListBox.CountItem() - 1);
@@ -182,6 +188,11 @@ namespace Clash_of_Bots.BotPackage
         public int Read(string type, Bitmap image)
         {
             return ResourcesReader.Read(type, image);
+        }
+
+        public int ReadTrophy(Bitmap image)
+        {
+            return ResourcesReader.ReadTrophy(image);
         }
 
         public Point DetectTroop(int id, Bitmap image)
@@ -204,5 +215,7 @@ namespace Clash_of_Bots.BotPackage
         {
             return botWorker.IsBusy;
         }
+
+
     }
 }

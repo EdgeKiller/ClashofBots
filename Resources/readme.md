@@ -1,0 +1,1 @@
+Put this two folders in the same folder as the executable.
