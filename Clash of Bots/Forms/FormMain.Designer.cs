@@ -316,6 +316,7 @@
             this.flatComboBox_barrack4.Size = new System.Drawing.Size(160, 24);
             this.flatComboBox_barrack4.TabIndex = 15;
             this.flatComboBox_barrack4.Tag = "4";
+            this.flatComboBox_barrack4.SelectedIndexChanged += new System.EventHandler(this.barrackComboBox_SelectedIndexChanged);
             // 
             // flatComboBox_barrack3
             // 
@@ -344,6 +345,7 @@
             this.flatComboBox_barrack3.Size = new System.Drawing.Size(160, 24);
             this.flatComboBox_barrack3.TabIndex = 14;
             this.flatComboBox_barrack3.Tag = "3";
+            this.flatComboBox_barrack3.SelectedIndexChanged += new System.EventHandler(this.barrackComboBox_SelectedIndexChanged);
             // 
             // flatComboBox_barrack2
             // 
@@ -372,6 +374,7 @@
             this.flatComboBox_barrack2.Size = new System.Drawing.Size(160, 24);
             this.flatComboBox_barrack2.TabIndex = 13;
             this.flatComboBox_barrack2.Tag = "2";
+            this.flatComboBox_barrack2.SelectedIndexChanged += new System.EventHandler(this.barrackComboBox_SelectedIndexChanged);
             // 
             // flatComboBox_barrack1
             // 
@@ -400,6 +403,7 @@
             this.flatComboBox_barrack1.Size = new System.Drawing.Size(160, 24);
             this.flatComboBox_barrack1.TabIndex = 12;
             this.flatComboBox_barrack1.Tag = "1";
+            this.flatComboBox_barrack1.SelectedIndexChanged += new System.EventHandler(this.barrackComboBox_SelectedIndexChanged);
             // 
             // flatNumeric_minTrophy
             // 
