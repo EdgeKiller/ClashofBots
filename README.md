@@ -10,7 +10,7 @@ Clash of Bots requiere some libraries :
   
   https://github.com/EdgeKiller/FlatUITheme
   
-  https://github.com/EdgeKiller/aforge
+  https://code.google.com/p/aforge/
   
   https://github.com/sebastienros/jint
   
